@@ -25,6 +25,9 @@ var mostrarEtapa;
 //variavel para manipular a imagem do acorde no html
 var imagemAcorde;
 
+//variavel responsavel pelo controle do som dos acordes
+var somAcorde;
+
 //Variavel para controlar o preparo para iniciar o cronometro
 var preparar;
 
@@ -59,6 +62,7 @@ function valorDefault() {
     
     mostrarEtapa = document.getElementById("etapa");
     imagemAcorde = document.getElementById("imagem-acorde");
+    somAcorde = document.getElementById("audio-acorde");
     preparar = document.getElementById("preparo");
     duracao = document.getElementById("cronometro");
     violao = document.getElementById("violao");
@@ -180,6 +184,7 @@ function mudarImagem(numero) {
                     nota[i] = true;
                     console.info("nota achada: " + i);
                     finalizado = true;
+                    audioAcorde(i+1);
                     imagemAcorde.src ="IMG/"+ tipoAcorde+"/"+tipoAcorde+""+(i+1)+".png";
                 } else {
                     console.log("nota repetida");
@@ -196,6 +201,23 @@ function mudarImagem(numero) {
             console.log("zerou");
         }
     }while (finalizado == false);
+}
+
+//função para o controle do audio do acorde
+function audioAcorde(numero) {
+    if(document.getElementById("controle-som").checked == true) {
+        console.warn("Som habilitado");
+        somAcorde.innerHTML = "";
+        somAcorde.innerHTML += '<source src="Sounds/'+tipoAcorde+'/'+tipoAcorde+""+numero+'.mp3" type="audio/mpeg/>';
+        somAcorde.innerHTML += '<source src="Sounds/'+tipoAcorde+'/'+tipoAcorde+""+numero+'.ogg" type="audio/ogg"/>';
+        somAcorde.innerHTML += '<source src="Sounds/'+tipoAcorde+'/'+tipoAcorde+""+numero+'.wav" type="audio/wav"/>';
+        somAcorde.load();
+        somAcorde.play();
+        console.log("Tocou o som de núemro: " + numero);
+    } else {
+        console.warn("Som desabilitado");
+    }
+    
 }
 
 //função que verifica a etapa para finalizar o cronometro
