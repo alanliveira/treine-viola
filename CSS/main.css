@@ -147,6 +147,27 @@ button {
     width: 50%;
 }
 
+#audio-acorde {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#progress-audio {
+    border: 1px solid #000;
+    display: none;
+    height: 13px;
+    margin: 10px 5px;
+    padding: 1px;
+    width: 100%;
+}
+
+#status {
+    background-color: #000;
+    width: 0%;
+    height: 100%;
+}
+
 .center {
     float: none;
     display: block;

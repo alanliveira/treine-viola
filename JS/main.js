@@ -219,7 +219,7 @@ function audioAcorde(numero) {
     }
     
 }
-
+    
 //função que verifica a etapa para finalizar o cronometro
 function finalizarEtapa(){
     if (etapaAtual < etapa) {

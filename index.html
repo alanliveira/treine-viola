@@ -13,8 +13,10 @@
                   </div>
                   <div class="dialogo-conteudo">
                       <form>
-                        <input type="checkbox" id="controle-som" checked/><label>Ativar som</label>
-                         <div>
+                          <div>
+                              <label>Ativar som</label><input type="checkbox" id="controle-som" checked/>
+                          </div>
+                          <div>
                             <label>Tempo</label><input type="number" min="5" max="25" step="5" value="15" id="conf-tempo"/>
                           </div>
                           <div>
@@ -61,6 +63,9 @@
                 <img src="IMG/VA0.png" id="imagem-acorde" class="center"/>
                 <div id="som-acorde">
                     <audio id="audio-acorde" autoplay></audio>
+                    <div id="progress-audio">
+                        <div id="status"></div>
+                    </div>
                 </div>
 		</div>
             </div>
