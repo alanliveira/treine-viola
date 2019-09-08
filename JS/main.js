@@ -21,7 +21,8 @@ function iniciar(acorde) {
     tipoAcorde = acorde;
     zerarContagem();
     document.getElementById("violao").style.display = "none";
-    document.getElementById("treinamento").style.display = "flex"; document.getElementById("preparo").style.display = "flex";
+    document.getElementById("treinamento").style.display = "flex";
+    document.getElementById("preparo").style.display = "flex";
     contagem = setInterval("prepararTempo()", 1000);
 }
 
@@ -76,7 +77,7 @@ function mudarImagem() {
     if(numAnterio == num){
         num = sotearNum();
     }
-    document.getElementById("imagem-acorde").src = "IMG/"+tipoAcorde+""+num+".png";
+    document.getElementById("imagem-acorde").src = "IMG/"+tipoAcorde+"/"+tipoAcorde+""+num+".png";
     /*console.log("II - var num: " + num + " var numAnterior: " + numAnterio);*/
     numAnterio = num;
 }

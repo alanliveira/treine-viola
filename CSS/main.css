@@ -1,24 +1,68 @@
 @import url(https://fonts.googleapis.com/css?family=Lobster);
-@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
+@import url(https://fonts.googleapis.com/css?family=Poiret+One);
+@import url(https://fonts.googleapis.com/css?family=Oswald:300);
 
 * {
     margin: 0;
     padding: 0;
 }
 
-#topo {
-    background-color: rgba(195, 53, 53, 0.93);
-    color: #fff;
-    font-family: 'Lobster', cursive;
-    font-size: 16pt;
-    text-align: center;
-    padding: 5px;
+body {
+    
 }
 
+#topo {
+    background-color: rgb(235, 98, 98);
+    box-shadow: 3px 0px 10px #000;
+    color: #fff;
+    font-family: 'Lobster', cursive;
+    font-size: 20pt;
+    display: inline;
+    padding: 5px 0;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+}
+
+/*Estilo do violao*/
 #violao {
     display: flex;
     flex-direction: column;
-    
+    font-family: 'Oswald', sans-serif;
+    margin: 0 auto;
+}
+
+#titulo {
+    align-items: flex-end;
+    background-image: url(../IMG/banner-violao.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    height: 400px;
+}
+
+#titulo h1{
+    color: #fff;
+    font-size: 48pt;
+    padding-left: 20px;
+    padding-bottom: 5px;
+    text-shadow: 0px 0px 10px #000;
+}
+
+#escolha-acorde {
+    margin: 0 auto;
+    width: 700px;
+}
+
+.tipo-acorde {
+    padding: 10px;
+}
+
+.tipo-acorde h2 {
+    font-size: 25pt;
+    margin-top: 20px;
 }
 
 .acorde {
@@ -26,13 +70,14 @@
     box-shadow: 0px 0px 3px #000;
     display: flex;
     flex-direction: column;
-    margin: 10px;
+    margin: 10px 10px;
     padding: 3px;
 }
 
 .acorde h3 {
     border-bottom: 1px solid #000;
-    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: 'Poiret One', cursive;
+    font-size: 16.5pt;
     margin: 5px 3px 0 3px;
     padding-top: 2px;
     text-transform: uppercase;
@@ -40,11 +85,11 @@
 
 .acorde button {
     align-self: flex-end;
-    background-color: #fff;
+    background-color: rgb(66,135,178);
     border: 1px solid #aaa;
     border-radius: 5px;
     box-shadow: 0px 0px 5px #aaa;
-    color: #aaa;
+    color: #fff;
     cursor: pointer;
     font-size: 16pt;
     margin: 10px 10px;
@@ -62,13 +107,14 @@
     width: 100%;
 }
 
+/*estilo do treinamento*/
 #treinamento {
     align-items: center;
     display: none;
     flex-flow: row;
     height: 100%;
     justify-content: center;
-    position: relative;
+    position: absolute;
     width: 100%;
 }
 
@@ -123,3 +169,4 @@
     padding: 5px;
     width: 700px;
 }
+
