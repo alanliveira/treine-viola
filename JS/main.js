@@ -40,6 +40,12 @@ var violao;
 //função que ira controlar a tela de treinamento
 var treinamento;
 
+//variavel para controlar as configurações
+var configurar;
+
+//função para mostrar as caixas de dialogo
+var caixaDialogo;
+
 //função para limpar todas as variaveis
 function valorDefault() {
     nota = [false, false, false, false, false, false, false];
@@ -57,6 +63,31 @@ function valorDefault() {
     duracao = document.getElementById("cronometro");
     violao = document.getElementById("violao");
     treinamento = document.getElementById("treinamento");
+    configurar = document.getElementById("configurar");
+    caixaDialogo = document.getElementById("dialogo");
+}
+
+//função para mostrar as configurações
+function configuracoes() {
+    dialogo.style.display = "flex";
+    configurar.style.display = "block";
+    console.log("Editar configurações");
+}
+
+//função para salvar as configurações
+function salvarConfiguracoes() {
+    configurar.style.display = "none";
+    dialogo.style.display = "none";
+    configurarTempo();
+    console.log("salvou as configurações");
+}
+
+//função para a configuração do tempo
+function configurarTempo() {
+    etapa = 7 * parseInt(document.getElementById("conf-ciclo").value);
+    console.log("Etapa configurada: " + etapa);
+    limiteTempo = parseInt(document.getElementById("conf-tempo").value);
+    console.log("Tempo configurado: " + limiteTempo);
 }
 
 //Funçao que escolhe a primeira imagem e inicia o cronometro
@@ -64,11 +95,10 @@ function iniciar(acorde) {
     console.log("Iniciado");
     valorDefault();
     tipoAcorde = acorde;
-    
     violao.style.display = "none";
     treinamento.style.display = "flex";
     preparar.style.display = "flex";
-    
+    configurarTempo();
     controlarTempo("contagemRegresiva()", true);
 }
 
@@ -148,7 +178,7 @@ function mudarImagem(numero) {
             if(numero == i) {
                 if(nota[i] == false) {
                     nota[i] = true;
-                    console.error("nota achada: " + i);
+                    console.info("nota achada: " + i);
                     finalizado = true;
                     imagemAcorde.src ="IMG/"+ tipoAcorde+"/"+tipoAcorde+""+(i+1)+".png";
                 } else {

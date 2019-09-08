@@ -5,64 +5,54 @@
         <link rel="stylesheet" href="CSS/main-resposive.css"/>
         <link rel="stylesheet" href="CSS/main.css"/>
     </head>
-    <body>
-       <section id="dialogo">
-               <div id="configurar">
-               <h2 id="titulo-configuracao">Configurar </h2>
-               <form>
-                   <label for="tempo">Tempo</label><input type="range" min="5" max="25" step="5" value="15"/><br/>
-                   <label>Ciclo</label>
-                   <input type="number" min="1" max="5" step="1" value="1"/>
-                   <button>Iniciar Treinamento</button>
-               </form>
-           </div>
-                <div id="dialog-inicio">
-                    <article>
-                        <p>O objetivo do treina viola é trazer mais facilidae em aprender a tocar o violão e treinar a tecnicas dos arcordes.</p>
-                        <h3>Como funciona</h3>
-                        <p>O quando você clicla no botão de iniciar, a aplicação ela dar 3 segundo para você se possicionar com o instrumento para então começar o treinamento. No treinamento ele ira gerar um arcorde aleatório onde você tem que pocisionar as mãos durante 10 segundo, para partir para a proxima, e isso se repete durante 14 ciclos ate a aplicação finalizar.</p>
-                        <p>Quando o acorde aparecer na tela você tem que posicionar as mão nas cordas respectivas e tocar uma vez, caso o tempo ainda não tenha passado toque de novo, ate mudar para o próximo acorde.</p>
-                        <h3>Quais arcordes eu vou aprender?</h3>
-                        <p>Ainda estamo na face de implementação dos arcordes, por enquanto só está disponivel os arcodes maiores</p>
-                        <h3>Como vou saber se eu estou tocando certo?</h3>
-                        <p>Ainda irei implementar uma função que ira reconhecer o som atraves do microfone, mas por enquanto vai algumas dicas</p>
-                        <ul>
-                            <li>Esteja em um ambiente silencioso</li>
-                            <li>pocisione bem os dedos da mão esquerda em cima da corda, certificando que não esta tocando nas cordas ao redor</li>
-                            <li>Se o som lhe soar estranho, é porque você esta tocando errado ou seu violão está com problemas</li>
-                        </ul>
-                    </article>
+    <body onload="valorDefault()">
+        <sectionS id="dialogo">
+            <div class="caixa-dialogo" id="configurar">
+                  <div class="dialogo-titulo">
+                      <h2 id="titulo-configuracao">Configurar </h2>
+                  </div>
+                  <div class="dialogo-conteudo">
+                      <form>
+                         <div>
+                            <label>Tempo</label><input type="number" min="5" max="25" step="5" value="15" id="conf-tempo"/>
+                          </div>
+                          <div>
+                              <label>Ciclo</label><input type="number" min="1" max="5" step="1" value="1" id="conf-ciclo"/>
+                          </div>
+                      </form>
+                      <button onclick="salvarConfiguracoes()">Salvar configurações</button>
                 </div>
+            </div>
         </section>
         <nav id="topo">
            <h1>TreinaViola</h1>
         </nav>
         <section id="violao">
-             <div id="titulo">
-                 <h1>Violão</h1>
-             </div>
-              <div id="escolha-acorde">s
-                 <div class="tipo-acorde">
-                  <h2>Acordes simples</h2>
-                   <div class="acorde">
-                       <h3>Acorde maior</h3>
-                       <p></p>
-                        <button type="button" onclick="iniciar('VA')">Iniciar</button>
+            <div id="titulo">
+                <h1>Violão</h1>
+                <div id="config" onclick="configuracoes()"></div>
+            </div>
+            <div id="escolha">
+                <div class="tipo-acorde">
+                    <h2>Básicos</h2>
+                       <div class="escolha-acorde">
+                        <div class="acorde">
+                            <h3>Acorde maior</h3>
+                            <button type="button" onclick="iniciar('VA')">Iniciar</button>
+                        </div>
+                        <div class="acorde">
+                            <h3>Acorde menor</h3>
+                            <button type="button" onclick="iniciar('VAM')">Iniciar</button>
+                        </div>
+                        <div class="acorde">
+                            <h3>Acorde com 7<sup>a</sup></h3>
+                            <button type="button" onclick="iniciar('VA7')">Iniciar</button>
+                        </div>
                     </div>
-                    <div class="acorde">
-                       <h3>Acorde menor</h3>
-                       <p></p>
-                        <button type="button" onclick="iniciar('VAM')">Iniciar</button>
-                    </div>
-                    <div class="acorde">
-                       <h3>Acorde com sétima</h3>
-                       <p></p>
-                        <button type="button" onclick="iniciar('VA7')">Iniciar</button>
-                    </div>
-                    </div>
+                </div>
             </div>
         </section>
-       <section id="treinamento">
+        <section id="treinamento">
             <div id="preparo">
                 3
             </div>
@@ -75,7 +65,6 @@
                 </div>
                 <div id="cronometro">00:00</div>
             </div>
-        </section>
-           
+        </section>    
     </body>
 </html>

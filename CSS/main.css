@@ -11,6 +11,19 @@ body {
     
 }
 
+button {
+    align-self: flex-end;
+    background-color: rgb(66,135,178);
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #aaa;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16pt;
+    margin: 10px auto;
+    padding: 5px 10px;
+}
+
 #topo {
     background-color: rgb(235, 98, 98);
     box-shadow: 3px 0px 10px #000;
@@ -39,6 +52,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    justify-content: space-between;
     display: flex;
     height: 400px;
 }
@@ -49,6 +63,15 @@ body {
     padding-left: 20px;
     padding-bottom: 5px;
     text-shadow: 0px 0px 10px #000;
+}
+
+#config {
+    background-image: url(../IMG/ico-config.png) ;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    height: 60px;
+    margin: 0 20px 15px 0;
+    width: 60px;
 }
 
 #escolha-acorde {
@@ -65,17 +88,29 @@ body {
     margin-top: 20px;
 }
 
+.escolha-acorde {
+    display: flex;
+    justify-content: center;
+}
+
+.escolha-acorde sup {
+    text-transform: none;
+}
+
 .acorde {
+    align-items: center;
     background-color: #ebebeb;
     box-shadow: 0px 0px 3px #000;
     display: flex;
     flex-direction: column;
+    height: 125px;
+    justify-content: center;
     margin: 10px 10px;
     padding: 3px;
+    width: 200px;
 }
 
 .acorde h3 {
-    border-bottom: 1px solid #000;
     font-family: 'Poiret One', cursive;
     font-size: 16.5pt;
     margin: 5px 3px 0 3px;
@@ -83,21 +118,8 @@ body {
     text-transform: uppercase;
 }
 
-.acorde button {
-    align-self: flex-end;
-    background-color: rgb(66,135,178);
-    border: 1px solid #aaa;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px #aaa;
-    color: #fff;
-    cursor: pointer;
-    font-size: 16pt;
-    margin: 10px 10px;
-    padding: 5px 10px;
-}
-
 #preparo {
-    background-color: rgba(200, 200, 200, .5);
+    background-color: rgba(0,0,0,.5);
     align-items: center;
     font-size: 50pt;
     display: none;
@@ -165,25 +187,46 @@ body {
     justify-content: center;
     position: absolute;
     width: 100%;
+    z-index: 2;
 }
 
-#dialogo div {
+.caixa-dialogo {
     background-color: #fff;
-    box-shadow: 2px 2px 10px #656565;
+    box-shadow: 2px 2px 5px #666;
     display: none;
-    padding: 50px;
+    position: relative;
 }
 
-#dialog-inicio h1 {
-    font-family: Arial;
-    text-align: center;
-}
-
-#dialog-inicio article {
-    font-family: monospace;
+.dialogo-titulo {
+    background-color: rgb(235, 98, 98);
+    box-shadow: 3px 0px 10px #000;
+    color: #fff;
+    font-family: 'Lobster', cursive;
     font-size: 14pt;
-    margin: 0 auto;
-    padding: 5px;
-    width: 700px;
+    position: absolute;
+    width: 100%;
 }
 
+.dialogo-titulo h2 {
+    padding: 10px;
+}
+
+.dialogo-conteudo {
+    background-color: #ebebeb;
+    padding: 80px 20px 10px 20px;
+}
+
+.dialogo-conteudo form div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dialogo-conteudo label, .dialogo-conteudo input{
+    font-family: arial;
+    font-size; 13pt;
+}
+
+.dialogo-conteudo input {
+    width: 50px;
+    padding: 2px;
+}
