@@ -2,16 +2,7 @@ var cont;
 var numAnterio;
 var segundo;
 var temp;
-
-//função q irá inciar a contagem e coloca a primeira imagem
-function iniciar() {
-    zerarContagem();
-    mudarImagem();
-    cicloTempo(true);
-    temp = setInterval("tempo()", 1000);
-    document.getElementById("inicio").style.display = "none";
-    document.getElementById("treinamento").style.display = "flex";
-}
+var contagemRegresiva;
 
 //função para zerar as contagens
 function zerarContagem() {
@@ -19,11 +10,34 @@ function zerarContagem() {
     numAnterio = 0;
     segundo = 0+"0";
     temp = 0;
+    contagemRegresiva = 3;
+}
+
+//função q irá inciar a contagem e coloca a primeira imagem
+function iniciar() {
+    zerarContagem();
+    document.getElementById("inicio").style.display = "none";
+    document.getElementById("treinamento").style.display = "flex";
+    document.getElementById("preparo").style.display = "flex";
+    setInterval("prepararTempo()", 1000);
+}
+
+//funçao para preparar o treino
+function prepararTempo() {
+    contagemRegresiva--;
+    document.getElementById("preparo").innerHTML = contagemRegresiva;
+    if(contagemRegresiva == 0) {
+        document.getElementById("preparo").innerHTML = "Já";
+        document.getElementById("preparo").style.display = "none";
+        clearInterval();
+        cicloTempo(true);
+        temp = setInterval("tempo()", 1000);
+    }
 }
 
 function tempo() {
     //Verificar o tempo a ser estimado
-    if (segundo < 5) {
+    if (segundo < 10) {
         segundo++;
         if(segundo < 10) {segundo = "0"+segundo}
     } else {
@@ -35,7 +49,7 @@ function tempo() {
 
         }
         //verificar o cilo de etapas a ser executado pela pessoa
-        if (cont == 10){
+        if (cont == 14){
             cicloTempo(false);
             pararContagem();
             zerarContagem();
@@ -56,14 +70,13 @@ function tempo() {
 //função para mudar a imagem na tela
 function mudarImagem() {
     num = sotearNum();
-    /*console.log("I - var num: " + num + " var numAnterior: " + numAnterio);*/
-    if(numAnterio == num){num = sotearNum()}
-    document.getElementById("imagem-acorde").src = "IMG/Violao-Acordes-Maiores-"+num+".png";
-    /*console.log("II - var num: " + num + " var numAnterior: " + numAnterio);
-    numAnterio = num;*/
-    if(cont == 10) {
-        document.getElementById("imagem-acorde").src = "IMG/Violao-Acordes-Maiores-0.png";
+    console.log("I - var num: " + num + " var numAnterior: " + numAnterio);
+    if(numAnterio == num){
+        num = sotearNum();
     }
+    document.getElementById("imagem-acorde").src = "IMG/Violao-Acordes-Maiores-"+num+".png";
+    console.log("II - var num: " + num + " var numAnterior: " + numAnterio);
+    numAnterio = num;
 }
 
 //Função para parar o ciclo de treino
@@ -73,15 +86,16 @@ function pararContagem(){
 
 //Função que ira sortear um número aleatório
 function sotearNum() {
-    return num = Math.floor(Math.random() * 7) + 1;
+    return Math.floor(Math.random() * 7) + 1;
 }
 
 //função para mostrar o ciclo do tempo a ser treinado
 function cicloTempo(modoAutomatico) {
+    mudarImagem();
     if(modoAutomatico == true) {
-        document.getElementById("ciclo").innerHTML = cont;
+        document.getElementById("ciclo").innerHTML = cont+"/14";
     }  else {
-        document.getElementById("ciclo").innerHTML = 0;
+        document.getElementById("ciclo").innerHTML = 0+"/14";
+        document.getElementById("imagem-acorde").src = "IMG/Violao-Acordes-Maiores-0.png";
     }
 }
-

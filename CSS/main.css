@@ -4,11 +4,14 @@
 }
 
 #inicio {
+    align-items: center;
     display: flex;
     justify-content: center;
     flex-flow: column;
-    margin: 20px;
-    padding: 20px;
+    height: 100%;
+    margin: 0 auto;
+    position: absolute;
+    width: 100%;
 }
 
 #inicio h1 {
@@ -19,7 +22,9 @@
 #inicio article {
     font-family: monospace;
     font-size: 14pt;
+    margin: 0 auto;
     padding: 5px;
+    width: 700px;
 }
 
 #inicio button {
@@ -35,10 +40,21 @@
     width: 150px;
 }
 
+#preparo {
+    background-color: rgba(200, 200, 200, .5);
+    align-items: center;
+    font-size: 50pt;
+    display: none;
+    justify-content: center;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
 #treinamento {
     align-items: center;
     display: none;
-    height: 500px;
+    height: 100%;
     flex-flow: row;
     width: 100%;
 }

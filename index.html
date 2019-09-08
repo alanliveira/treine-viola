@@ -8,9 +8,24 @@
         <div id="inicio">
             <h1>TreinaViola</h1>
             <article>
-                O treina viola é uma plataforma onde você irá aprender a tocar violão online e gratuito. 
+                <p>O objetivo do treina viola é trazer mais facilidae em aprender a tocar o violão e treinar a tecnicas dos arcordes.</p>
+                <h3>Como funciona</h3>
+                <p>O quando você clicla no botão de iniciar, a aplicação ela dar 3 segundo para você se possicionar com o instrumento para então começar o treinamento. No treinamento ele ira gerar um arcorde aleatório onde você tem que pocisionar as mãos durante 10 segundo, para partir para a proxima, e isso se repete durante 14 ciclos ate a aplicação finalizar.</p>
+                <p>Quando o acorde aparecer na tela você tem que posicionar as mão nas cordas respectivas e tocar uma vez, caso o tempo ainda não tenha passado toque de novo, ate mudar para o próximo acorde.</p>
+                <h3>Quais arcordes eu vou aprender?</h3>
+                <p>Ainda estamo na face de implementação dos arcordes, por enquanto só está disponivel os arcodes maiores</p>
+                <h3>Como vou saber se eu estou tocando certo?</h3>
+                <p>Ainda irei implementar uma função que ira reconhecer o som atraves do microfone, mas por enquanto vai algumas dicas</p>
+                <ul>
+                    <li>Esteja em um ambiente silencioso</li>
+                    <li>pocisione bem os dedos da mão esquerda em cima da corda, certificando que não esta tocando nas cordas ao redor</li>
+                    <li>Se o som lhe soar estranho, é porque você esta tocando errado ou seu violão está com problemas</li>
+                </ul>
             </article>
             <button type="button" onclick="iniciar()">Iniciar</button>
+        </div>
+        <div id="preparo">
+            3
         </div>
         <div id="treinamento">
             <div id="imagem">
@@ -18,7 +33,7 @@
             </div>
             <div id="tempo">
                 <div id="ciclo"  class="center">
-                    0
+                    0/14
                 </div>
                 <form name="form">
                     <input type="text" name="cronometro" id="cronometro" value="00:00"/>
