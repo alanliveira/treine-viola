@@ -74,7 +74,7 @@ button {
     width: 60px;
 }
 
-#escolha-acorde {
+#escolha {
     margin: 0 auto;
     width: 700px;
 }
@@ -119,13 +119,16 @@ button {
 }
 
 #preparo {
-    background-color: rgba(0,0,0,.5);
     align-items: center;
+    background-color: rgba(0,0,0,.5);
+    color: #fff;
     font-size: 50pt;
+    font-family: arial;
     display: none;
     justify-content: center;
     height: 100%;
     position: absolute;
+    top: 0px;
     width: 100%;
 }
 
@@ -185,7 +188,9 @@ button {
     height: 100%;
     display: none;
     justify-content: center;
+    left: 0px;
     position: absolute;
+    top: opx;
     width: 100%;
     z-index: 2;
 }
