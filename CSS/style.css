@@ -25,7 +25,7 @@ button {
 }
 
 #topo {
-    background-color: rgb(235, 98, 98);
+    background-color: #eb6262;
     box-shadow: 3px 0px 10px #000;
     color: #fff;
     font-family: 'Lobster', cursive;
@@ -54,12 +54,12 @@ button {
     background-repeat: no-repeat;
     justify-content: space-between;
     display: flex;
-    height: 400px;
+    height: 500px;
 }
 
 #titulo h1{
     color: #fff;
-    font-size: 48pt;
+    font-size: 50pt;
     padding-left: 20px;
     padding-bottom: 5px;
     text-shadow: 0px 0px 10px #000;
@@ -80,10 +80,11 @@ button {
 }
 
 .tipo-acorde {
+    background-color: #ebebeb;
     padding: 10px;
 }
 
-.tipo-acorde h2 {
+.tipo-acorde h3 {
     font-size: 25pt;
     margin-top: 20px;
 }
@@ -99,19 +100,19 @@ button {
 
 .acorde {
     align-items: center;
-    background-color: #ebebeb;
+    background-color: #fff;
     box-shadow: 0px 0px 3px #000;
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     height: 125px;
     justify-content: center;
     margin: 10px 10px;
     padding: 3px;
-    width: 200px;
 }
 
 .acorde h3 {
-    font-family: 'Poiret One', cursive;
+    font-family: Arial, sans-serif;
     font-size: 16.5pt;
     margin: 5px 3px 0 3px;
     padding-top: 2px;
@@ -119,32 +120,26 @@ button {
 }
 
 #preparo {
-    align-items: center;
-    background-color: rgba(0,0,0,.5);
-    color: #fff;
     font-size: 50pt;
     font-family: arial;
-    display: none;
-    justify-content: center;
-    height: 100%;
-    position: absolute;
-    top: 0px;
-    width: 100%;
 }
 
 /*estilo do treinamento*/
 #treinamento {
     align-items: center;
     display: none;
-    flex-flow: row;
+    flex-direction: column;
     height: 100%;
     justify-content: center;
     position: absolute;
     width: 100%;
 }
 
-#painel-esquerdo {
-    width: 50%;
+#painel {
+    align-items: center;
+    display: none;
+    justify-content: space-around;
+    width: 100%;
 }
 
 #audio-acorde {
@@ -174,9 +169,6 @@ button {
     margin: 0 auto;
 }
 
-#tempo {
-    width: 50%;
-}
 
 #etapa {
     font-family: Arial, sans-serif;
@@ -228,12 +220,12 @@ button {
     box-shadow: 3px 0px 10px #000;
     color: #fff;
     font-family: 'Lobster', cursive;
-    font-size: 14pt;
     position: absolute;
     width: 100%;
 }
 
 .dialogo-titulo h2 {
+    font-size: 20pt;
     padding: 10px;
 }
 
@@ -243,13 +235,37 @@ button {
 }
 
 .dialogo-conteudo form div {
+    align-items: center;
+    background-color: #fff;
+    border-bottom: 1px solid #aaa;
+    border-left: 1px solid #aaa;
+    border-right: 1px solid #aaa;
+    padding: 5px;
     display: flex;
     justify-content: space-between;
 }
 
+.dialogo-conteudo form div:first-child {
+    border-bottom: 1px solid #aaa;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.dialogo-conteudo form div:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
 .dialogo-conteudo label, .dialogo-conteudo input{
     font-family: arial;
-    font-size; 13pt;
+    font-size: 12pt;
+}
+
+.dialogo-conteudo form input[type="checkbox"] {
+    border: 1px solid #aaa;
+    display: block;
+    height: 25px;
+    width: 25px;
 }
 
 .dialogo-conteudo input {

@@ -1,0 +1,95 @@
+/*Ainda pra fazer*/
+@media screen and (max-width: 800px) {
+    #dialogo {
+    }
+    
+    .caixa-dialogo {
+        box-shadow: none;
+        height: 100%;
+        width: 100%;
+    }
+    
+    .dialogo-titulo {
+        box-shadow: none;
+    }
+    
+    .dialogo-conteudo {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-between;
+        padding: 0 10px;
+    }
+    
+    .dialogo-conteudo form {
+        margin-top: 70px;
+    }
+    
+    .dialogo-conteudo label, .dialogo-conteudo input{
+        font-family: Arial, sans-serif;
+        font-size: 18pt;
+    }
+    
+    .dialogo-conteudo button {
+        font-size: 20pt;
+        display: block;
+        position: relative;
+        width: 100%;
+    }
+    
+    .escolha-acorde {
+        width: 100%;
+        flex-wrap: wrap;
+        margin: 10px 0;
+    }
+    .acorde {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 600px), (max-device-width: 600px) and (orientation: portrait) {
+    .dialogo-conteudo button {
+    }
+    
+    #escolha {
+        width: 100%;
+    }
+    
+    .tipo-acorde {
+        padding: 0px;
+    }
+    
+    .escolha-acorde {
+        flex-direction: column;
+    }
+    
+    .acorde {
+        width: 100%;
+        padding: 0;
+    }
+    
+    .acorde button {
+        font-size: 20pt;
+    }
+    
+    #painel {
+        flex-direction: column;
+    }
+    
+    #tempo {
+        margin: 10px 0 0 0;
+    }
+}
+
+@media screen and (max-device-width: 425px) and (orientation: portrait) {
+    #painel-esquerdo {
+        margin-top: 50px;
+    }
+    #etapa {
+        font-size: 20pt;
+    }
+    
+    #cronometro {
+        font-size: 36pt;
+    }
+}

@@ -73,6 +73,9 @@ function valorDefault() {
 
 //função para mostrar as configurações
 function configuracoes() {
+    if(window.innerWidth < 800) {
+        violao.style.display ="none";
+    }
     dialogo.style.display = "flex";
     configurar.style.display = "block";
     console.log("Editar configurações");
@@ -80,6 +83,9 @@ function configuracoes() {
 
 //função para salvar as configurações
 function salvarConfiguracoes() {
+    if(window.innerWidth < 800) {
+        violao.style.display ="flex";
+    }
     configurar.style.display = "none";
     dialogo.style.display = "none";
     configurarTempo();
@@ -116,6 +122,7 @@ function contagemRegresiva() {
     if(tempoPreparo == 0) {
         controlarTempo("contagemRegresiva()", false);
         preparar.style.display = "none";
+        document.getElementById("painel").style.display = "flex";
         controlarTempo("cronometro()", true);
         finalizarEtapa();
         mudarImagem(numAleatorio());
@@ -137,8 +144,9 @@ function cronometro() {
             mudarImagem(numAleatorio());
         } else {
             imagemAcorde.src = "IMG/VA0.png";
-            violao.style.display = "flex";
+            document.getElementById("painel").style.display = "none";
             treinamento.style.display = "none";
+            violao.style.display = "flex";
         }
     }
     
@@ -208,7 +216,7 @@ function audioAcorde(numero) {
     if(document.getElementById("controle-som").checked == true) {
         console.warn("Som habilitado");
         somAcorde.innerHTML = "";
-        somAcorde.innerHTML += '<source src="Sounds/'+tipoAcorde+'/'+tipoAcorde+""+numero+'.mp3" type="audio/mpeg/>';
+        somAcorde.innerHTML += '<source src="Sounds/'+tipoAcorde+'/'+tipoAcorde+""+numero+'.mp3" type="audio/mpeg"/>';
         somAcorde.innerHTML += '<source src="Sounds/'+tipoAcorde+'/'+tipoAcorde+""+numero+'.ogg" type="audio/ogg"/>';
         somAcorde.innerHTML += '<source src="Sounds/'+tipoAcorde+'/'+tipoAcorde+""+numero+'.wav" type="audio/wav"/>';
         somAcorde.load();
@@ -229,7 +237,13 @@ function finalizarEtapa(){
         return false;
     }
     console.log("finalizado");
+    somAcorde.innerHTML = "";
     mostrarEtapa.innerHTML = "0/0";
     controlarTempo("cronometro()", false);
     return true;
 }
+
+//Função que ira definir o tamanho da janela {
+window.addEventListener('resize', function(){
+    
+});

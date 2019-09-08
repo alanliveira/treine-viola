@@ -1,9 +1,11 @@
 <html>
     <head>
         <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="theme-color" content="#eb6262"/>
         <script type="text/javascript" src="JS/main.js"></script>
-        <link rel="stylesheet" href="CSS/main-resposive.css"/>
-        <link rel="stylesheet" href="CSS/main.css"/>
+        <link rel="stylesheet" href="CSS/style.css"/>
+        <link rel="stylesheet" href="CSS/style-resposive.css"/>
     </head>
     <body onload="valorDefault()">
         <section id="dialogo">
@@ -37,7 +39,7 @@
             </div>
             <div id="escolha">
                 <div class="tipo-acorde">
-                    <h2>Básicos</h2>
+                    <h3>Básico</h3>
                        <div class="escolha-acorde">
                         <div class="acorde">
                             <h3>Acorde maior</h3>
@@ -56,24 +58,23 @@
             </div>
         </section>
         <section id="treinamento">
-            <div id="preparo">
-                3
-            </div>
-            <div id="painel-esquerdo">
-                <img src="IMG/VA0.png" id="imagem-acorde" class="center"/>
-                <div id="som-acorde">
-                    <audio id="audio-acorde" autoplay></audio>
-                    <div id="progress-audio">
-                        <div id="status"></div>
+            <div id="preparo">3</div>
+            <div id="painel">
+                <div id="painel-esquerdo">
+                    <img src="IMG/VA0.png" id="imagem-acorde" class="center"/>
+                    <div id="som-acorde">
+                        <audio id="audio-acorde" autoplay></audio>
+                        <div id="progress-audio">
+                            <div id="status"></div>
+                        </div>
                     </div>
                 </div>
-		</div>
-            </div>
-            <div id="tempo">
-                <div id="etapa"  class="center">
-                    0/0
+                <div id="tempo">
+                    <div id="etapa"  class="center">
+                        0/0
+                    </div>
+                    <div id="cronometro">00:00</div>
                 </div>
-                <div id="cronometro">00:00</div>
             </div>
         </section>    
     </body>
