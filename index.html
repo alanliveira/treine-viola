@@ -6,6 +6,34 @@
         <link rel="stylesheet" href="CSS/main.css"/>
     </head>
     <body>
+       <section id="dialogo">
+               <div id="configurar">
+               <h2 id="titulo-configuracao">Configurar </h2>
+               <form>
+                   <label for="tempo">Tempo</label><input type="range" min="5" max="25" step="5" value="15"/><br/>
+                   <label>Ciclo</label>
+                   <input type="number" min="1" max="5" step="1" value="1"/>
+                   <button>Iniciar Treinamento</button>
+               </form>
+           </div>
+                <div id="dialog-inicio">
+                    <article>
+                        <p>O objetivo do treina viola é trazer mais facilidae em aprender a tocar o violão e treinar a tecnicas dos arcordes.</p>
+                        <h3>Como funciona</h3>
+                        <p>O quando você clicla no botão de iniciar, a aplicação ela dar 3 segundo para você se possicionar com o instrumento para então começar o treinamento. No treinamento ele ira gerar um arcorde aleatório onde você tem que pocisionar as mãos durante 10 segundo, para partir para a proxima, e isso se repete durante 14 ciclos ate a aplicação finalizar.</p>
+                        <p>Quando o acorde aparecer na tela você tem que posicionar as mão nas cordas respectivas e tocar uma vez, caso o tempo ainda não tenha passado toque de novo, ate mudar para o próximo acorde.</p>
+                        <h3>Quais arcordes eu vou aprender?</h3>
+                        <p>Ainda estamo na face de implementação dos arcordes, por enquanto só está disponivel os arcodes maiores</p>
+                        <h3>Como vou saber se eu estou tocando certo?</h3>
+                        <p>Ainda irei implementar uma função que ira reconhecer o som atraves do microfone, mas por enquanto vai algumas dicas</p>
+                        <ul>
+                            <li>Esteja em um ambiente silencioso</li>
+                            <li>pocisione bem os dedos da mão esquerda em cima da corda, certificando que não esta tocando nas cordas ao redor</li>
+                            <li>Se o som lhe soar estranho, é porque você esta tocando errado ou seu violão está com problemas</li>
+                        </ul>
+                    </article>
+                </div>
+        </section>
         <nav id="topo">
            <h1>TreinaViola</h1>
         </nav>
@@ -13,7 +41,7 @@
              <div id="titulo">
                  <h1>Violão</h1>
              </div>
-              <div id="escolha-acorde">
+              <div id="escolha-acorde">s
                  <div class="tipo-acorde">
                   <h2>Acordes simples</h2>
                    <div class="acorde">
@@ -34,38 +62,20 @@
                     </div>
             </div>
         </section>
-           <section id="treinamento">
-                <div id="preparo">
-                    3
+       <section id="treinamento">
+            <div id="preparo">
+                3
+            </div>
+            <div id="imagem">
+                <img src="IMG/VA0.png" id="imagem-acorde" class="center"/>
+            </div>
+            <div id="tempo">
+                <div id="etapa"  class="center">
+                    0/0
                 </div>
-                <div id="imagem">
-                    <img src="IMG/VA0.png" id="imagem-acorde" class="center"/>
-                </div>
-                <div id="tempo">
-                    <div id="ciclo"  class="center">
-                        0/14
-                    </div>
-                    <form name="form">
-                        <input type="text" name="cronometro" id="cronometro" value="00:00"/>
-                    </form>
-                </div>
-            </section>
-        <div id="dialog-inicio">
-            <article>
-                <p>O objetivo do treina viola é trazer mais facilidae em aprender a tocar o violão e treinar a tecnicas dos arcordes.</p>
-                <h3>Como funciona</h3>
-                <p>O quando você clicla no botão de iniciar, a aplicação ela dar 3 segundo para você se possicionar com o instrumento para então começar o treinamento. No treinamento ele ira gerar um arcorde aleatório onde você tem que pocisionar as mãos durante 10 segundo, para partir para a proxima, e isso se repete durante 14 ciclos ate a aplicação finalizar.</p>
-                <p>Quando o acorde aparecer na tela você tem que posicionar as mão nas cordas respectivas e tocar uma vez, caso o tempo ainda não tenha passado toque de novo, ate mudar para o próximo acorde.</p>
-                <h3>Quais arcordes eu vou aprender?</h3>
-                <p>Ainda estamo na face de implementação dos arcordes, por enquanto só está disponivel os arcodes maiores</p>
-                <h3>Como vou saber se eu estou tocando certo?</h3>
-                <p>Ainda irei implementar uma função que ira reconhecer o som atraves do microfone, mas por enquanto vai algumas dicas</p>
-                <ul>
-                    <li>Esteja em um ambiente silencioso</li>
-                    <li>pocisione bem os dedos da mão esquerda em cima da corda, certificando que não esta tocando nas cordas ao redor</li>
-                    <li>Se o som lhe soar estranho, é porque você esta tocando errado ou seu violão está com problemas</li>
-                </ul>
-            </article>
-        </div>
+                <div id="cronometro">00:00</div>
+            </div>
+        </section>
+           
     </body>
 </html>

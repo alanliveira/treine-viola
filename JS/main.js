@@ -1,105 +1,183 @@
-var cont;
-var numAnterio;
+//Vetor para representar as notas musicais
+var nota;
+
+//variavel para controlar o tempo
 var segundo;
-var temp;
-var contagemRegresiva;
-var contagem;
-var tipoAcorde="";
 
-//função para zerar as contagens
-function zerarContagem() {
-    cont = 1;
-    numAnterio = 0;
+//variavel para o limite de tempo
+var limiteTempo;
+
+//variavel que será responsavel para o controle do ccronometro
+var tempo;
+
+//variavel para repetir o ciclo
+var etapa;
+
+//variavel para verificar o ciclo atual
+var etapaAtual;
+
+//variavel que ira definir qual acorde será tocado
+var tipoAcorde;
+
+//variavel que ira referenciar um elemnto do html para mostrar a quantidade e etapa e quanto falta para terminar
+var mostrarEtapa;
+
+//variavel para manipular a imagem do acorde no html
+var imagemAcorde;
+
+//Variavel para controlar o preparo para iniciar o cronometro
+var preparar;
+
+//variavel para a contagem regressiva
+var tempoPreparo;
+
+//função para mostrar o cronometro
+var duracao;
+
+//função que vai controlar a seção violão
+var violao;
+
+//função que ira controlar a tela de treinamento
+var treinamento;
+
+//função para limpar todas as variaveis
+function valorDefault() {
+    nota = [false, false, false, false, false, false, false];
     segundo = 0+"0";
-    temp = 0;
-    contagemRegresiva = 4;
-    contagem = 0;
+    limiteTempo = 10;
+    tempo = "";
+    etapa = 14;
+    etapaAtual = 0;
+    tipoAcorde = "";
+    tempoPreparo = 4;
+    
+    mostrarEtapa = document.getElementById("etapa");
+    imagemAcorde = document.getElementById("imagem-acorde");
+    preparar = document.getElementById("preparo");
+    duracao = document.getElementById("cronometro");
+    violao = document.getElementById("violao");
+    treinamento = document.getElementById("treinamento");
 }
 
-//função q irá inciar a contagem e coloca a primeira imagem
+//Funçao que escolhe a primeira imagem e inicia o cronometro
 function iniciar(acorde) {
+    console.log("Iniciado");
+    valorDefault();
     tipoAcorde = acorde;
-    zerarContagem();
-    document.getElementById("violao").style.display = "none";
-    document.getElementById("treinamento").style.display = "flex";
-    document.getElementById("preparo").style.display = "flex";
-    contagem = setInterval("prepararTempo()", 1000);
+    
+    violao.style.display = "none";
+    treinamento.style.display = "flex";
+    preparar.style.display = "flex";
+    
+    controlarTempo("contagemRegresiva()", true);
 }
 
-//funçao para preparar o treino
-function prepararTempo() {
-    contagemRegresiva--;
-    document.getElementById("preparo").innerHTML = contagemRegresiva-1;
-    if (contagemRegresiva == 1) {
-        document.getElementById("preparo").innerHTML = "Já";
+//função para iniciar o cronometro
+function contagemRegresiva() {
+    tempoPreparo--;
+    preparar.innerHTML = (tempoPreparo-1);
+    if(tempoPreparo == 1) {
+        preparar.innerHTML = "Começar";
     }
-    if(contagemRegresiva == 0) {
-        document.getElementById("preparo").style.display = "none";
-        document.getElementById("preparo").innerHTML = "3";
-        clearInterval(contagem);
-        cicloTempo(true);
-        temp = setInterval("tempo()", 1000);
+    if(tempoPreparo == 0) {
+        controlarTempo("contagemRegresiva()", false);
+        preparar.style.display = "none";
+        controlarTempo("cronometro()", true);
+        finalizarEtapa();
+        mudarImagem(numAleatorio());
+        preparar.innerHTML = 3;
     }
 }
 
-function tempo() {
-    //Verificar o tempo a ser estimado
-    if (segundo < 10) {
+//Função que ira ser o cronometro para o tempo
+function cronometro() {
+    if (segundo < limiteTempo) {
         segundo++;
-        if(segundo < 10) {segundo = "0"+segundo}
-    } else {
-        //zerar a contagem
-        segundo = 0+"0";
-        //mudar a imagem para trinar outro acorde
-        //verificar o cilo de etapas a ser executado pela pessoa
-        if (cont == 14){
-            cicloTempo(false);
-            pararContagem();
-            zerarContagem();
-            document.getElementById("treinamento").style.display = "none";
-            document.getElementById("violao").style.display = "flex";
-        } else {
-            cont++;
-            cicloTempo(true);
+        if (segundo < 10) {
+            segundo = "0"+segundo;
         }
-        /*console.log("Contagem: " + cont)*/
+    } else {
+        segundo = 0+"0";
+        //verifica se é preciso finalizar o cronometro ou coloca a imagem default
+        if(finalizarEtapa() == false) {
+            mudarImagem(numAleatorio());
+        } else {
+            imagemAcorde.src = "IMG/VA0.png";
+            violao.style.display = "flex";
+            treinamento.style.display = "none";
+        }
     }
     
     //mostrar o tempo na tela
-    form.cronometro.value = "00:"+segundo;
-    ;
+    duracao.innerHTML = "00:"+segundo;
 }
 
-//função para mudar a imagem na tela
-function mudarImagem() {
-    num = sotearNum();
-    /*console.log("I - var num: " + num + " var numAnterior: " + numAnterio);*/
-    if(numAnterio == num){
-        num = sotearNum();
+//função para ter um controle mais preciso do tempo
+function controlarTempo(funcao, estado) {
+    if(estado == true) {
+        temp = setInterval(funcao, 1000);
+        console.log("contagem iniciada");
+    } else {
+        clearInterval(temp);
+        console.log("contagem terminada");
     }
-    document.getElementById("imagem-acorde").src = "IMG/"+tipoAcorde+"/"+tipoAcorde+""+num+".png";
-    /*console.log("II - var num: " + num + " var numAnterior: " + numAnterio);*/
-    numAnterio = num;
 }
 
-//Função para parar o ciclo de treino
-function pararContagem(){
-    clearInterval(temp);
-    console.log("contagem parada");
+//função que gera um número aleatório
+function numAleatorio() {
+    return Math.floor(Math.random() * 7);
 }
 
-//Função que ira sortear um número aleatório
-function sotearNum() {
-    return Math.floor(Math.random() * 7) + 1;
+//Função que altera a imagem e não deixa repetir se todos os vetores tiver o valor true
+function mudarImagem(numero) {
+    finalizado = true; //variavel que vai finalizar o loop
+    ciclo = false; //variavel responsavel para repetir o ciclo de notas
+
+    do {
+        for(i = 0; i < nota.length; i++) {
+            if(nota[i] == true){
+                ciclo = true;
+            } else {
+                ciclo = false;
+                break;
+                console.log("quebrou o laço");
+            }
+        }
+
+        for(i = 0; i < nota.length; i++) {
+            if(numero == i) {
+                if(nota[i] == false) {
+                    nota[i] = true;
+                    console.error("nota achada: " + i);
+                    finalizado = true;
+                    imagemAcorde.src ="IMG/"+ tipoAcorde+"/"+tipoAcorde+""+(i+1)+".png";
+                } else {
+                    console.log("nota repetida");
+                    numero = numAleatorio();
+                    finalizado = false;
+                }
+            }
+        }
+
+        if(ciclo == true) {
+            for(i = 0; i < nota.length; i++) {
+                nota[i] = false;
+            }
+            console.log("zerou");
+        }
+    }while (finalizado == false);
 }
 
-//função para mostrar o ciclo do tempo a ser treinado
-function cicloTempo(modoAutomatico) {
-    mudarImagem();
-    if(modoAutomatico == true) {
-        document.getElementById("ciclo").innerHTML = cont+"/14";
-    }  else {
-        document.getElementById("ciclo").innerHTML = 0+"/14";
-        document.getElementById("imagem-acorde").src = "IMG/VA0.png";
+//função que verifica a etapa para finalizar o cronometro
+function finalizarEtapa(){
+    if (etapaAtual < etapa) {
+        etapaAtual++;
+        mostrarEtapa.innerHTML = etapaAtual + "/" + etapa;
+        console.log("etapa: " + etapaAtual);
+        return false;
     }
+    console.log("finalizado");
+    mostrarEtapa.innerHTML = "0/0";
+    controlarTempo("cronometro()", false);
+    return true;
 }
