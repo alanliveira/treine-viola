@@ -3,6 +3,7 @@ var numAnterio;
 var segundo;
 var temp;
 var contagemRegresiva;
+var contagem;
 
 //função para zerar as contagens
 function zerarContagem() {
@@ -10,7 +11,8 @@ function zerarContagem() {
     numAnterio = 0;
     segundo = 0+"0";
     temp = 0;
-    contagemRegresiva = 3;
+    contagemRegresiva = 4;
+    contagem = 0;
 }
 
 //função q irá inciar a contagem e coloca a primeira imagem
@@ -19,17 +21,20 @@ function iniciar() {
     document.getElementById("inicio").style.display = "none";
     document.getElementById("treinamento").style.display = "flex";
     document.getElementById("preparo").style.display = "flex";
-    setInterval("prepararTempo()", 1000);
+    contagem = setInterval("prepararTempo()", 1000);
 }
 
 //funçao para preparar o treino
 function prepararTempo() {
     contagemRegresiva--;
-    document.getElementById("preparo").innerHTML = contagemRegresiva;
-    if(contagemRegresiva == 0) {
+    document.getElementById("preparo").innerHTML = contagemRegresiva-1;
+    if (contagemRegresiva == 1) {
         document.getElementById("preparo").innerHTML = "Já";
+    }
+    if(contagemRegresiva == 0) {
         document.getElementById("preparo").style.display = "none";
-        clearInterval();
+        document.getElementById("preparo").innerHTML = "3";
+        clearInterval(contagem);
         cicloTempo(true);
         temp = setInterval("tempo()", 1000);
     }
@@ -78,6 +83,7 @@ function mudarImagem() {
 //Função para parar o ciclo de treino
 function pararContagem(){
     clearInterval(temp);
+    console.log("contagem parada");
 }
 
 //Função que ira sortear um número aleatório
