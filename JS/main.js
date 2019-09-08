@@ -44,10 +44,6 @@ function tempo() {
         //zerar a contagem
         segundo = 0+"0";
         //mudar a imagem para trinar outro acorde
-        if(segundo == 0) {
-            mudarImagem();
-
-        }
         //verificar o cilo de etapas a ser executado pela pessoa
         if (cont == 14){
             cicloTempo(false);
