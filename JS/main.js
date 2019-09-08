@@ -100,6 +100,6 @@ function cicloTempo(modoAutomatico) {
         document.getElementById("ciclo").innerHTML = cont+"/14";
     }  else {
         document.getElementById("ciclo").innerHTML = 0+"/14";
-        document.getElementById("imagem-acorde").src = "IMG/"+tipoAcorde+"0.png";
+        document.getElementById("imagem-acorde").src = "IMG/VA0.png";
     }
 }
