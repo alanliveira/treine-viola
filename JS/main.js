@@ -49,6 +49,12 @@ var configurar;
 //função para mostrar as caixas de dialogo
 var caixaDialogo;
 
+//Variavel para definir a sequencia do tempo
+var sequencia;
+
+//numeracao para controlar a imagem
+var numSequencia;
+
 //função para limpar todas as variaveis
 function valorDefault() {
     nota = [false, false, false, false, false, false, false];
@@ -56,6 +62,8 @@ function valorDefault() {
     limiteTempo = 10;
     tempo = "";
     etapa = 14;
+  	sequencia = false;
+  	numSequencia = -1;
     etapaAtual = 0;
     tipoAcorde = "";
     tempoPreparo = 4;
@@ -83,9 +91,7 @@ function configuracoes() {
 
 //função para salvar as configurações
 function salvarConfiguracoes() {
-    if(window.innerWidth < 800) {
-        violao.style.display ="flex";
-    }
+    violao.style.display ="flex";
     configurar.style.display = "none";
     dialogo.style.display = "none";
     configurarTempo();
@@ -98,6 +104,13 @@ function configurarTempo() {
     console.log("Etapa configurada: " + etapa);
     limiteTempo = parseInt(document.getElementById("conf-tempo").value);
     console.log("Tempo configurado: " + limiteTempo);
+  	if (document.getElementById("sequencia").checked == true) {
+	  sequencia = true;
+	  console.log("Modo sequência ativado");
+	} else {
+	  sequencia = false;
+	  console.log("Modo sequência desativado");
+	}
 }
 
 //Funçao que escolhe a primeira imagem e inicia o cronometro
@@ -167,6 +180,11 @@ function controlarTempo(funcao, estado) {
 
 //função que gera um número aleatório
 function numAleatorio() {
+  	if(sequencia == true) {
+	  	console.warn("Sequencia habilitado");
+	  	numSequencia++;
+	  	return numSequencia;
+	}
     return Math.floor(Math.random() * 7);
 }
 
@@ -206,6 +224,7 @@ function mudarImagem(numero) {
             for(i = 0; i < nota.length; i++) {
                 nota[i] = false;
             }
+			numSequencia = 0;
             console.log("zerou");
         }
     }while (finalizado == false);

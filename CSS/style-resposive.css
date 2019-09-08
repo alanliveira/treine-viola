@@ -1,5 +1,5 @@
 /*Ainda pra fazer*/
-@media screen and (max-width: 600px), (max-device-width: 600px) and (orientation: portrait) {
+@media screen and (max-width: 800px) {
     #dialogo {
     }
     
@@ -37,11 +37,26 @@
         width: 100%;
     }
     
+    .escolha-acorde {
+        width: 100%;
+        flex-wrap: wrap;
+        margin: 10px 0;
+    }
+    .acorde {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 600px), (max-device-width: 600px) and (orientation: portrait) {
     .dialogo-conteudo button {
     }
     
     #escolha {
         width: 100%;
+    }
+    
+    .tipo-acorde {
+        padding: 0px;
     }
     
     .escolha-acorde {
@@ -50,7 +65,7 @@
     
     .acorde {
         width: 100%;
-        margin: 10px 0;
+        padding: 0;
     }
     
     .acorde button {
