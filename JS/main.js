@@ -4,6 +4,7 @@ var segundo;
 var temp;
 var contagemRegresiva;
 var contagem;
+var tipoAcorde="";
 
 //função para zerar as contagens
 function zerarContagem() {
@@ -16,11 +17,11 @@ function zerarContagem() {
 }
 
 //função q irá inciar a contagem e coloca a primeira imagem
-function iniciar() {
+function iniciar(acorde) {
+    tipoAcorde = acorde;
     zerarContagem();
-    document.getElementById("inicio").style.display = "none";
-    document.getElementById("treinamento").style.display = "flex";
-    document.getElementById("preparo").style.display = "flex";
+    document.getElementById("violao").style.display = "none";
+    document.getElementById("treinamento").style.display = "flex"; document.getElementById("preparo").style.display = "flex";
     contagem = setInterval("prepararTempo()", 1000);
 }
 
@@ -55,7 +56,7 @@ function tempo() {
             pararContagem();
             zerarContagem();
             document.getElementById("treinamento").style.display = "none";
-            document.getElementById("inicio").style.display = "flex";
+            document.getElementById("violao").style.display = "flex";
         } else {
             cont++;
             cicloTempo(true);
@@ -71,12 +72,12 @@ function tempo() {
 //função para mudar a imagem na tela
 function mudarImagem() {
     num = sotearNum();
-    console.log("I - var num: " + num + " var numAnterior: " + numAnterio);
+    /*console.log("I - var num: " + num + " var numAnterior: " + numAnterio);*/
     if(numAnterio == num){
         num = sotearNum();
     }
-    document.getElementById("imagem-acorde").src = "IMG/Violao-Acordes-Maiores-"+num+".png";
-    console.log("II - var num: " + num + " var numAnterior: " + numAnterio);
+    document.getElementById("imagem-acorde").src = "IMG/"+tipoAcorde+""+num+".png";
+    /*console.log("II - var num: " + num + " var numAnterior: " + numAnterio);*/
     numAnterio = num;
 }
 
@@ -98,6 +99,6 @@ function cicloTempo(modoAutomatico) {
         document.getElementById("ciclo").innerHTML = cont+"/14";
     }  else {
         document.getElementById("ciclo").innerHTML = 0+"/14";
-        document.getElementById("imagem-acorde").src = "IMG/Violao-Acordes-Maiores-0.png";
+        document.getElementById("imagem-acorde").src = "IMG/"+tipoAcorde+"0.png";
     }
 }

@@ -5,8 +5,44 @@
         <link rel="stylesheet" href="CSS/main.css"/>
     </head>
     <body>
-        <div id="inicio">
-            <h1>TreinaViola</h1>
+        <nav id="topo">
+           <h1>TreinaViola</h1>
+        </nav>
+        <section id="violao">
+          <h2>Violão</h2>
+           <div class="acorde">
+               <h3>Acorde maior</h3>
+               <p></p>
+                <button type="button" onclick="iniciar('VA')">Iniciar</button>
+            </div>
+            <div class="acorde">
+               <h3>Acorde menor</h3>
+               <p></p>
+                <button type="button" onclick="iniciar('VAM')">Iniciar</button>
+            </div>
+            <div class="acorde">
+               <h3>Acorde com sétima</h3>
+               <p></p>
+                <button type="button" onclick="iniciar('VA7')">Iniciar</button>
+            </div>
+        </section>
+           <section id="treinamento">
+                <div id="preparo">
+                    3
+                </div>
+                <div id="imagem">
+                    <img src="IMG/VA0.png" id="imagem-acorde" class="center"/>
+                </div>
+                <div id="tempo">
+                    <div id="ciclo"  class="center">
+                        0/14
+                    </div>
+                    <form name="form">
+                        <input type="text" name="cronometro" id="cronometro" value="00:00"/>
+                    </form>
+                </div>
+            </section>
+        <div id="dialog-inicio">
             <article>
                 <p>O objetivo do treina viola é trazer mais facilidae em aprender a tocar o violão e treinar a tecnicas dos arcordes.</p>
                 <h3>Como funciona</h3>
@@ -22,23 +58,6 @@
                     <li>Se o som lhe soar estranho, é porque você esta tocando errado ou seu violão está com problemas</li>
                 </ul>
             </article>
-            <button type="button" onclick="iniciar()">Iniciar</button>
-        </div>
-        <div id="preparo">
-            3
-        </div>
-        <div id="treinamento">
-            <div id="imagem">
-                <img src="IMG/Violao-Acordes-Maiores-0.png" id="imagem-acorde" class="center"/>
-            </div>
-            <div id="tempo">
-                <div id="ciclo"  class="center">
-                    0/14
-                </div>
-                <form name="form">
-                    <input type="text" name="cronometro" id="cronometro" value="00:00"/>
-                </form>
-            </div>
         </div>
     </body>
 </html>

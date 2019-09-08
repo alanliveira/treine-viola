@@ -1,45 +1,55 @@
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
+
 * {
     margin: 0;
     padding: 0;
 }
 
-#inicio {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    flex-flow: column;
-    height: 100%;
-    margin: 0 auto;
-    position: absolute;
-    width: 100%;
-}
-
-#inicio h1 {
-    font-family: Arial;
+#topo {
+    background-color: rgba(195, 53, 53, 0.93);
+    color: #fff;
+    font-family: 'Lobster', cursive;
+    font-size: 16pt;
     text-align: center;
-}
-
-#inicio article {
-    font-family: monospace;
-    font-size: 14pt;
-    margin: 0 auto;
     padding: 5px;
-    width: 700px;
 }
 
-#inicio button {
+#violao {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.acorde {
+    background-color: #ebebeb;
+    box-shadow: 0px 0px 3px #000;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 3px;
+}
+
+.acorde h3 {
+    border-bottom: 1px solid #000;
+    font-family: 'Open Sans Condensed', sans-serif;
+    margin: 5px 3px 0 3px;
+    padding-top: 2px;
+    text-transform: uppercase;
+}
+
+.acorde button {
+    align-self: flex-end;
     background-color: #fff;
     border: 1px solid #aaa;
-    border-radius: 3px;
+    border-radius: 5px;
     box-shadow: 0px 0px 5px #aaa;
     color: #aaa;
     cursor: pointer;
-    font-size: 24pt;
-    margin: 10px auto;
+    font-size: 16pt;
+    margin: 10px 10px;
     padding: 5px 10px;
-    width: 150px;
 }
-
 
 #preparo {
     background-color: rgba(200, 200, 200, .5);
@@ -55,13 +65,11 @@
 #treinamento {
     align-items: center;
     display: none;
-    height: 100%;
     flex-flow: row;
+    height: 100%;
+    justify-content: center;
+    position: relative;
     width: 100%;
-}
-
-#treinamento div {
-    flex: 1 1 auto;
 }
 
 #imagem {
@@ -73,7 +81,6 @@
     display: block;
     margin: 0 auto;
 }
-
 
 #tempo {
     width: 50%;
@@ -90,4 +97,29 @@
     font-size: 48pt;
     text-align: center;
     width: 100%;
+}
+
+/*Caixas de dialogo*/
+#dialog-inicio {
+    align-items: center;
+    display: none;
+    justify-content: center;
+    flex-flow: column;
+    height: 100%;
+    margin: 0 auto;
+    position: absolute;
+    width: 100%;
+}
+
+#dialog-inicio h1 {
+    font-family: Arial;
+    text-align: center;
+}
+
+#dialog-inicio article {
+    font-family: monospace;
+    font-size: 14pt;
+    margin: 0 auto;
+    padding: 5px;
+    width: 700px;
 }
