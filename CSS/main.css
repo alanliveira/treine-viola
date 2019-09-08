@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#inicio {
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    margin: 20px;
+    padding: 20px;
+}
+
+#inicio h1 {
+    font-family: Arial;
+    text-align: center;
+}
+
+#inicio article {
+    font-family: monospace;
+    font-size: 14pt;
+    padding: 5px;
+}
+
+#inicio button {
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    box-shadow: 0px 0px 5px #aaa;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 24pt;
+    margin: 10px auto;
+    padding: 5px 10px;
+    width: 150px;
+}
+
+#treinamento {
+    align-items: center;
+    display: none;
+    height: 500px;
+    flex-flow: row;
+    width: 100%;
+}
+
+#treinamento div {
+    flex: 1 1 auto;
+}
+
+#imagem {
+    width: 50%;
+}
+
+.center {
+    float: none;
+    display: block;
+    margin: 0 auto;
+}
+
+
+#tempo {
+    width: 50%;
+}
+
+#ciclo {
+    font-family: Arial, sans-serif;
+    font-size: 30pt;
+    text-align: center;
+}
+
+#cronometro {
+    border: none;
+    font-size: 48pt;
+    text-align: center;
+    width: 100%;
+}

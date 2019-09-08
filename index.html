@@ -1,19 +1,27 @@
 <html>
     <head>
         <meta charset="utf-8"/>
-        <script type="text/javascript" src="JS/cronometro.js"></script>
+        <script type="text/javascript" src="JS/main.js"></script>
+        <link rel="stylesheet" href="CSS/main.css"/>
     </head>
     <body>
-        <div id="inici">
+        <div id="inicio">
+            <h1>TreinaViola</h1>
+            <article>
+                O treina viola é uma plataforma onde você irá aprender a tocar violão online e gratuito. 
+            </article>
             <button type="button" onclick="iniciar()">Iniciar</button>
         </div>
         <div id="treinamento">
-            <div >
-                <img src="IMG/Violao-Acordes-Maiores-1.png" id="imagem-acorde"/>
+            <div id="imagem">
+                <img src="IMG/Violao-Acordes-Maiores-0.png" id="imagem-acorde" class="center"/>
             </div>
             <div id="tempo">
+                <div id="ciclo"  class="center">
+                    0
+                </div>
                 <form name="form">
-                    <input type="text" name="cronometro" value="00:00"/>
+                    <input type="text" name="cronometro" id="cronometro" value="00:00"/>
                 </form>
             </div>
         </div>
