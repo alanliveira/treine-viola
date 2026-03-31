@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo } from "react";
 import type { ChordCategory, TrainingConfig } from "@/domain/entities/training-config";
 import { useTrainingSession } from "@/interface/hooks/use-training-session";
 import { getChordDiagram } from "@/domain/services/chord-diagrams";
 import { ChordDiagramSvg } from "@/interface/components/chord-diagram-svg";
+import { WebAudioChordAdapter } from "@/infrastructure/adapters/web-audio-chord";
 
 const defaultConfig: TrainingConfig = {
   category: "VA",
@@ -24,14 +25,14 @@ export function TrainingApp() {
   const { running, countdown, currentIndex, totalSteps, timeLeft, step, config, setConfig, start, stop } =
     useTrainingSession(defaultConfig);
 
-  const audioRef = useRef<HTMLAudioElement>(null);
+  const chordAudio = useMemo(() => new WebAudioChordAdapter(), []);
+  const currentDiagram = step ? getChordDiagram(config.category, step.position) : getChordDiagram(config.category, 1);
 
   useEffect(() => {
-    if (config.soundEnabled && step && audioRef.current) {
-      audioRef.current.load();
-      void audioRef.current.play().catch(() => null);
+    if (config.soundEnabled && step) {
+      chordAudio.play(currentDiagram.name);
     }
-  }, [step, config.soundEnabled]);
+  }, [step, config.soundEnabled, currentDiagram.name, chordAudio]);
 
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col gap-6 p-6">
@@ -91,7 +92,7 @@ export function TrainingApp() {
               onChange={(e) => setConfig({ ...config, soundEnabled: e.target.checked })}
               disabled={running}
             />
-            Som
+            Som gerado pelo sistema
           </label>
           <label className="flex items-center gap-2">
             <input
@@ -121,12 +122,7 @@ export function TrainingApp() {
         {running && countdown === 0 && (
           <div className="mt-6 grid gap-4 md:grid-cols-[2fr_1fr]">
             <div className="rounded-lg bg-slate-800 p-3">
-              <ChordDiagramSvg
-                diagram={step ? getChordDiagram(config.category, step.position) : getChordDiagram(config.category, 1)}
-              />
-              <audio ref={audioRef} autoPlay>
-                {config.soundEnabled && step ? <source src={step.audioSrc} type="audio/mpeg" /> : null}
-              </audio>
+              <ChordDiagramSvg diagram={currentDiagram} />
             </div>
             <div className="flex flex-col items-center justify-center gap-3 rounded-lg bg-slate-800 p-3">
               <p className="text-lg font-semibold">Etapa</p>

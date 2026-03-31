@@ -84,3 +84,13 @@ Isso permite evoluir para:
 - animações de dedos/cordas,
 - temas visuais (cores, acessibilidade),
 - exportação para impressão e assets dinâmicos.
+
+## Geração de som pelo próprio sistema
+
+O treino agora pode tocar acordes sintéticos gerados no navegador com **Web Audio API**, sem depender de arquivos de áudio gravados.
+
+- Adaptador: `src/infrastructure/adapters/web-audio-chord.ts`
+- Porta: `src/application/ports/chord-audio-port.ts`
+- Uso na interface: `TrainingApp`
+
+> Observação: o timbre é aproximado (sintético), não idêntico ao violão real.
