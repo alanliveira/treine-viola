@@ -1,33 +1,96 @@
-# treine-viola - Seu treinador de acorde
+# Treine Viola (migração para Next.js)
 
-Esse projeto foi feito no ano de 2016 e teve como foco em aprender a treinar as passagens de acordes no violão, com isso criei essa aplicação web que envolveu meus conhecimento em HTM, CSS e JavaScript puro, sem nenhum framework's de desenvolvovimento.
+Este projeto foi migrado de uma aplicação legada em HTML/CSS/JS puro para **Next.js + React + TypeScript + TailwindCSS**, com uma organização baseada em **Clean Architecture** e estilo **Hexagonal Architecture (Ports & Adapters)**.
 
-## Objetivo
+## Objetivo da migração
 
-Criar um aplicação web que fosse ao estilo do aplicativo Duolingo, que as pessoas pudessem a aprender a aprender e tocar violão com mais facilidade, sem depender de um professor para ensina-lá.
+- Evoluir uma base legada para um stack moderno e sustentável.
+- Separar responsabilidades (domínio, aplicação, infraestrutura e interface).
+- Facilitar testes, manutenção e extensões futuras (gamificação, usuários, captura de áudio etc.).
 
-## funcionalidade
+## Arquitetura adotada
 
-### Apresentação de acordes
-No inicio serão 3 acordes básicos apresentados que mostrara o grupo de acordes no caso chamai de ciclos) e suas notas respectivas (Nessa primeira etapa não está incluindo os acidentes músicais)
+```txt
+src/
+  domain/                -> regras de negócio puras
+    entities/
+    services/
+  application/           -> casos de uso + portas
+    use-cases/
+    ports/
+  infrastructure/        -> adapters concretos (ex: random)
+    adapters/
+  interface/             -> UI + hooks React
+    components/
+    hooks/
+  app/                   -> camada de entrega (Next.js App Router)
+```
 
-### Ciclo de acordes
-O cliclo de acorde são 7 notas músicais que pertence a uma harmonia de acordes
+### Mapeamento Clean Architecture
 
-### Imagens Ilustrativas
-Representa a posição das mãos sobre o violão e quais cordas você deve toca-las
+- **Entities (Domain):** `TrainingConfig`, regras de acordes e ciclo.
+- **Use Cases (Application):** `ChordSession`, responsável por montar cada etapa do treino.
+- **Interface Adapters:** hook `useTrainingSession` e componente `TrainingApp`.
+- **Framework & Drivers:** Next.js/Tailwind no `src/app`.
 
-### Cronômetro
-É um tempo determinado para você ouvir e reproduzir o acorde, nessa etapa ele não captura o audio e compara se você tocou certo ou errado
+### Mapeamento Hexagonal
 
-## Ideias para futuras implementações
+- **Porta:** `RandomizerPort`.
+- **Adapter:** `MathRandomizerAdapter`.
+- **Núcleo:** `ChordSession` depende da porta, não da implementação concreta.
 
-- gamificar a plataforma
-- Introdução ao violão
-- Posicionamento das mãos
-- Colocar mais arcodes
-- Criação e gerenciamento de usuários
-- Captar som do computador do cliente
-- Criar progresso do aluno
-- Criar um rendenizador de acorde e dedilhados
-- Regravar soms ou gerar por um MIDI
+## Como executar
+
+```bash
+npm install
+npm run dev
+```
+
+Aplicação em: `http://localhost:3000`
+
+## Sugestões de próximas tecnologias (para sua aprovação)
+
+1. **Testes de unidade (Vitest + Testing Library)**
+   - Cobrir `ChordSession`, `useTrainingSession` e regras de progressão.
+2. **State management (Zustand)**
+   - Caso o fluxo cresça para múltiplos módulos de estudo.
+3. **Validação de contratos (Zod)**
+   - Garantir segurança para inputs de configuração e APIs futuras.
+4. **Persistência (Prisma + PostgreSQL)**
+   - Para usuários, trilhas de estudo e histórico de progresso.
+5. **Autenticação (Auth.js / NextAuth)**
+   - Login social e sessões para evolução do aluno.
+6. **Observabilidade (Sentry + OpenTelemetry)**
+   - Erros de produção, tracing e métricas de performance.
+7. **PWA (next-pwa)**
+   - Uso offline para treino e experiência mobile melhor.
+
+## Legado preservado
+
+Os assets e arquivos antigos foram mantidos em `public/` para referência e compatibilidade:
+
+- `public/IMG`
+- `public/Sounds`
+- `public/legacy-css`
+- `public/legacy-js`
+- `public/legacy-index.html`
+
+## Renderização de acordes em SVG
+
+A camada de interface não usa mais imagem estática para exibir o acorde atual.
+Agora a renderização é feita por um componente SVG (`ChordDiagramSvg`) a partir de um catálogo tipado de shapes em `src/domain/services/chord-diagrams.ts`.
+
+Isso permite evoluir para:
+- animações de dedos/cordas,
+- temas visuais (cores, acessibilidade),
+- exportação para impressão e assets dinâmicos.
+
+## Geração de som pelo próprio sistema
+
+O treino agora pode tocar acordes sintéticos gerados no navegador com **Web Audio API**, sem depender de arquivos de áudio gravados.
+
+- Adaptador: `src/infrastructure/adapters/web-audio-chord.ts`
+- Porta: `src/application/ports/chord-audio-port.ts`
+- Uso na interface: `TrainingApp`
+
+> Observação: o timbre é aproximado (sintético), não idêntico ao violão real.
