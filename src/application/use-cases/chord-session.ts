@@ -4,7 +4,6 @@ import type { RandomizerPort } from "@/application/ports/randomizer-port";
 
 export interface TrainingStep {
   position: number;
-  imageSrc: string;
   audioSrc: string;
 }
 
@@ -26,7 +25,6 @@ export class ChordSession {
 
     return {
       position,
-      imageSrc: `/${this.config.category}/${this.config.category}${position}.png`,
       audioSrc: `/Sounds/${this.config.category}/${this.config.category}${position}.mp3`,
     };
   }

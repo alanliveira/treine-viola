@@ -3,6 +3,8 @@
 import { useEffect, useRef } from "react";
 import type { ChordCategory, TrainingConfig } from "@/domain/entities/training-config";
 import { useTrainingSession } from "@/interface/hooks/use-training-session";
+import { getChordDiagram } from "@/domain/services/chord-diagrams";
+import { ChordDiagramSvg } from "@/interface/components/chord-diagram-svg";
 
 const defaultConfig: TrainingConfig = {
   category: "VA",
@@ -119,10 +121,8 @@ export function TrainingApp() {
         {running && countdown === 0 && (
           <div className="mt-6 grid gap-4 md:grid-cols-[2fr_1fr]">
             <div className="rounded-lg bg-slate-800 p-3">
-              <img
-                src={step?.imageSrc ?? "/VA0.png"}
-                alt="Acorde atual"
-                className="mx-auto h-[320px] w-auto rounded-md object-contain"
+              <ChordDiagramSvg
+                diagram={step ? getChordDiagram(config.category, step.position) : getChordDiagram(config.category, 1)}
               />
               <audio ref={audioRef} autoPlay>
                 {config.soundEnabled && step ? <source src={step.audioSrc} type="audio/mpeg" /> : null}

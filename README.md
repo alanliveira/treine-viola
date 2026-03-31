@@ -74,3 +74,13 @@ Os assets e arquivos antigos foram mantidos em `public/` para referência e comp
 - `public/legacy-css`
 - `public/legacy-js`
 - `public/legacy-index.html`
+
+## Renderização de acordes em SVG
+
+A camada de interface não usa mais imagem estática para exibir o acorde atual.
+Agora a renderização é feita por um componente SVG (`ChordDiagramSvg`) a partir de um catálogo tipado de shapes em `src/domain/services/chord-diagrams.ts`.
+
+Isso permite evoluir para:
+- animações de dedos/cordas,
+- temas visuais (cores, acessibilidade),
+- exportação para impressão e assets dinâmicos.
